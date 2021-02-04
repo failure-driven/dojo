@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
+_usage() {
+  echo
+  echo -e "Hi $(whoami)!"
+  echo
+  echo -e "${GREEN}Setup${NC}"
+  echo
+  echo -e "${YELLOW}make setup_co_authors${NC} to attribute your pair or mob"
+  echo -e "${YELLOW}make setup_lolcommits${NC} cause lolcommits are fun"
+  echo
+  echo -e "${GREEN}Setup new ruby dojo${NC}"
+  echo
+  echo -e "${YELLOW}make new_ruby_dojo${NC}    mkdir and setup rspec for ruby project"
+  echo
+  echo -e "${GREEN}Workflow${NC}"
+  echo
+  echo -e "${YELLOW}make prettier_ruby${NC}    rubocop any modified files"
+  echo -e "${YELLOW}make rubocop_fix_all${NC}  rubocop and auto-correct all files"
+  echo
+  echo -e "${YELLOW}bundle exec rspec${NC}     how you run specs"
+  echo -e "${YELLOW}bundle exec guard${NC}     how you auto run specs"
+  echo
+  echo -e "${GREEN}Reward${NC}"
+  echo
+  echo -e "${YELLOW}make last_lol${NC}         show last lolcommit for this project"
+  echo -e "${YELLOW}make all_the_lols${NC}     show all the lolcommits for this project"
+}
+_usage

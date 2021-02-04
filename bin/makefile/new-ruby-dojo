@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+
+set -e
+
+name=${(j:_:)*}
+echo creating $name
+mkdir -p $name
+cd $name
+bundle init
+echo "\ngem \"guard-rspec\"\ngem \"rspec\"\ngem \"rubocop\"" >> Gemfile
+bundle
+bundle exec rspec --init
+bundle exec guard init rspec
+# TODO: fails due to guard file breaking Metrics/BlockLength
+# bundle exec rubocop -A .
+bundle exec rspec
+cd ..
+echo "- [${name}](./${name}/)\n" >> README.md
+
+echo "  🎉 ready to dojo"
+echo ""
+echo "  cd ${name}"
+echo ""
+echo "  and run"
+echo "    bundle exec rspec"
+echo "  OR"
+echo "    bundle exec guard"
+echo ""
+
+echo "bundle exec guard" | pbcopy
+
