@@ -26,6 +26,7 @@ setup_co_authors:
 # TODO: make sure dependencies like ffmpeg are installed via brew
 .PHONY: setup_lolcommits
 setup_lolcommits:
+	brew install imagemagick ffmpeg
 	gem install lolcommits
 	lolcommits --enable --delay 1 --animate 6 --fork
 
