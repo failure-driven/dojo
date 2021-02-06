@@ -86,3 +86,5 @@ coding dojo - because pairing on code is so much better.
 
 ## Projects
 
+- [substring_context](./substring_context/)
+
