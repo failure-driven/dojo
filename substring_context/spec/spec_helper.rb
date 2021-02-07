@@ -100,3 +100,5 @@ RSpec.configure do |config|
     File.join(__dir__, "..", "lib", "**", "*.rb")
   ].sort.each { |f| require f }
 end
+
+require 'byebug'

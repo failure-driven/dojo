@@ -11,7 +11,7 @@ RSpec.describe SubstringContext do
     expect(substring_context.find("quick")).to eq(["The quick brown"])
   end
 
-  xit "returns multiple contexts for multiple matches" do
+  it "returns multiple contexts for multiple matches" do
     substring_context = SubstringContext.new("The quick brown fox jumps over the quick dog")
     expect(substring_context.find("quick")).to eq(["The quick brown", "the quick dog"])
   end
@@ -39,9 +39,27 @@ RSpec.describe SubstringContext do
       "The quick brown fox jumps over the lazy dog",
     )
     expect(
-      substring_context.find(%w[The dog]),
+      substring_context.find("The dog"),
     ).to eq(["The quick", "lazy dog"])
   end
+
+  it "returns the begginning" do
+    substring_context = SubstringContext.new(
+      "The quick brown fox jumps over the lazy dog",
+    )
+    expect(
+      substring_context.find("The"),
+    ).to eq(["The quick"])
+  end 
+  
+  it "returns the end" do
+    substring_context = SubstringContext.new(
+      "The quick brown fox jumps over the lazy dog",
+    )
+    expect(
+      substring_context.find("dog"),
+    ).to eq(["lazy dog"])
+  end 
 
   # chage from +-1 word to number of characters
 end
