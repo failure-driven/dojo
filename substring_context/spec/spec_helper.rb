@@ -101,4 +101,4 @@ RSpec.configure do |config|
   ].sort.each { |f| require f }
 end
 
-require 'byebug'
+require "byebug"

@@ -4,10 +4,10 @@ class SubstringContext
   end
 
   def find(search_string)
-    text_to_array = @text.split(' ')
+    text_to_array = @text.split
     indexes_of_string = []
-    search_string.split(" ").each do |search_sub_string|
-      indexes_of_string.push(*text_to_array.each_index.select{|i| text_to_array[i] == search_sub_string})
+    search_string.split.each do |search_sub_string|
+      indexes_of_string.push(*text_to_array.each_index.select { |i| text_to_array[i] == search_sub_string })
     end
 
     last_index = nil
@@ -22,7 +22,7 @@ class SubstringContext
           next
         else
           in_context_sub_string = true
-          start_index = index == 0 ? 0 : index - 1
+          start_index = index.zero? ? 0 : index - 1
         end
       else
         in_context_sub_string = false
@@ -31,14 +31,14 @@ class SubstringContext
       end
       last_index = index
     end
-    if !indexes_of_string.empty?
-    start_index ||= last_index - (gap_size / 2)
-    output << get_string_context(text_to_array, start_index, (last_index + 2) - start_index)
+    unless indexes_of_string.empty?
+      start_index ||= last_index - (gap_size / 2)
+      output << get_string_context(text_to_array, start_index, (last_index + 2) - start_index)
     end
     output
   end
 
   def get_string_context(text_to_array, start_index, number_of_words)
-    text_to_array.slice(start_index, number_of_words).join(' ')
+    text_to_array.slice(start_index, number_of_words).join(" ")
   end
 end

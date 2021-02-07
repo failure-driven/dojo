@@ -24,7 +24,7 @@ RSpec.describe SubstringContext do
       substring_context.find("quick brown"),
     ).to eq(["The quick brown fox"])
   end
-  
+
   it "returns the whole input if all the substrings overlap" do
     substring_context = SubstringContext.new(
       "The quick brown fox jumps over the lazy dog",
@@ -50,8 +50,8 @@ RSpec.describe SubstringContext do
     expect(
       substring_context.find("The"),
     ).to eq(["The quick"])
-  end 
-  
+  end
+
   it "returns the end" do
     substring_context = SubstringContext.new(
       "The quick brown fox jumps over the lazy dog",
@@ -59,7 +59,7 @@ RSpec.describe SubstringContext do
     expect(
       substring_context.find("dog"),
     ).to eq(["lazy dog"])
-  end 
+  end
 
   # chage from +-1 word to number of characters
 end
