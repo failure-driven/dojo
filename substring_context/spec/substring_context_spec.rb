@@ -16,25 +16,25 @@ RSpec.describe SubstringContext do
     expect(substring_context.find("quick")).to eq(["The quick brown", "the quick dog"])
   end
 
-  xit "returns a join context when there is less than 2 words between found contexts" do
+  it "returns a join context when there is less than 2 words between found contexts" do
     substring_context = SubstringContext.new(
       "The quick brown fox jumps over the lazy dog",
     )
     expect(
-      substring_context.find(%w[quick brown]),
+      substring_context.find("quick brown"),
     ).to eq(["The quick brown fox"])
   end
 
-  xit "returns the whole input if all the substrings overlap" do
+  it "returns the whole input if all the substrings overlap" do
     substring_context = SubstringContext.new(
       "The quick brown fox jumps over the lazy dog",
     )
     expect(
-      substring_context.find(%w[quick fox over lazy]),
+      substring_context.find("quick fox over lazy"),
     ).to eq(["The quick brown fox jumps over the lazy dog"])
   end
 
-  xit "returns the begginning and end as expected" do
+  it "returns the beginning and end as expected" do
     substring_context = SubstringContext.new(
       "The quick brown fox jumps over the lazy dog",
     )
@@ -43,7 +43,7 @@ RSpec.describe SubstringContext do
     ).to eq(["The quick", "lazy dog"])
   end
 
-  it "returns the begginning" do
+  it "returns the beginning" do
     substring_context = SubstringContext.new(
       "The quick brown fox jumps over the lazy dog",
     )
