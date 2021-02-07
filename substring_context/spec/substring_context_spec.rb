@@ -24,7 +24,7 @@ RSpec.describe SubstringContext do
       substring_context.find("quick brown"),
     ).to eq(["The quick brown fox"])
   end
-
+  
   it "returns the whole input if all the substrings overlap" do
     substring_context = SubstringContext.new(
       "The quick brown fox jumps over the lazy dog",
