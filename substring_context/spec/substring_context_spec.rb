@@ -6,7 +6,7 @@ RSpec.describe SubstringContext do
     expect(substring_context.find("zebra")).to be_empty
   end
 
-  xit "returns the word before and after a found substring" do
+  it "returns the word before and after a found substring" do
     substring_context = SubstringContext.new("The quick brown fox jumps over the lazy dog")
     expect(substring_context.find("quick")).to eq(["The quick brown"])
   end
@@ -34,12 +34,14 @@ RSpec.describe SubstringContext do
     ).to eq(["The quick brown fox jumps over the lazy dog"])
   end
 
-  xit "returns the whole input if all the substrings overlap" do
+  xit "returns the begginning and end as expected" do
     substring_context = SubstringContext.new(
       "The quick brown fox jumps over the lazy dog",
     )
     expect(
-      substring_context.find(%w[quick fox over lazy]),
-    ).to eq(["The quick brown fox jumps over the lazy dog"])
+      substring_context.find(%w[The dog]),
+    ).to eq(["The quick", "lazy dog"])
   end
+
+  # chage from +-1 word to number of characters
 end
