@@ -23,7 +23,8 @@ _usage() {
   echo -e "${GREEN}Workflow${NC}"
   echo
   echo -e "${YELLOW}make prettier_ruby${NC}    rubocop any modified files"
-  echo -e "${YELLOW}make rubocop_fix_all${NC}  rubocop and auto-correct all files"
+  echo -e "${YELLOW}make lint${NC}             rubocop all files"
+  echo -e "${YELLOW}make lint-fix${NC}         rubocop and auto-correct all files"
   echo
   echo -e "${YELLOW}bundle exec rspec${NC}     how you run specs"
   echo -e "${YELLOW}bundle exec guard${NC}     how you auto run specs"

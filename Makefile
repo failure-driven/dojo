@@ -19,9 +19,13 @@ usage:
 new_ruby_dojo:
 	bin/makefile/new-ruby-dojo $(or $(name),$(error Must specify name: "make new_ruby_dojo name=awesome-dojo"))
 
-.PHONY: rubocop_fix_all
-rubocop_fix_all:
-	bundle exec rubocop -A .
+.PHONY: lint
+lint:
+	bundle exec rubocop
+
+.PHONY: lint-fix
+lint-fix:
+	bundle exec rubocop -A
 
 .PHONY: prettier_ruby
 prettier_ruby:
