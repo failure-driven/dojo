@@ -7,12 +7,17 @@ echo creating $name
 mkdir -p $name
 cd $name
 bundle init
-bundle add guard-rspec rspec rubocop
+bundle add \
+    guard-rspec \
+    rspec \
+    rubocop-performance \
+    rubocop-rspec \
+    standard
 bundle
 bundle exec rspec --init
 bundle exec guard init rspec
-# TODO: fails due to guard file breaking Metrics/BlockLength
-# bundle exec rubocop -A .
+# NOTE: ignore Metrics/BlockLength for guard file
+bundle exec rubocop -A --except Metrics/BlockLength
 bundle exec rspec
 cd ..
 echo "- [${name}](./${name}/)\n" >> README.md
