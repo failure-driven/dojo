@@ -7,7 +7,7 @@ echo creating $name
 mkdir -p $name
 cd $name
 bundle init
-echo "\ngem \"guard-rspec\"\ngem \"rspec\"\ngem \"rubocop\"" >> Gemfile
+bundle add guard-rspec rspec rubocop
 bundle
 bundle exec rspec --init
 bundle exec guard init rspec

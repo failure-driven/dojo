@@ -52,17 +52,16 @@ coding dojo - because pairing on code is so much better.
 - Co-authored-by
 
   ```
-  make setup_co_authors:
+  make setup_co_authors
 
-    # which basically will
-    vi .git/.gitmessage
-    # add your awesome co-authors
-    Co-authored-by: Name 1 <github user email>
-    ...
-    Co-authored-by: Name N <github user email>
+  git mob --list
+  git mob saramic   # mob with github username
 
-    # set up git to use the .gitmessage
-    git config commit.template .git/.gitmessage
+  # stored in
+  cat ~/.git-coauthors
+
+  # and apply to template in
+  cat ~/.gitcommit
   ```
 
 - Lolcommits
@@ -86,5 +85,5 @@ coding dojo - because pairing on code is so much better.
 
 ## Projects
 
-- [substring_context](./substring_context/)
+- [2021-02-07-substring_context](./2021-02-07-substring_context/)
 
