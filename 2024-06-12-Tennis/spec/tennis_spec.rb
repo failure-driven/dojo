@@ -7,7 +7,7 @@ RSpec.describe "Tennis" do
   end
   it "if server wins a point, the score is 15 love" do
     tennis = Tennis.new
-    pending "someone creates point server method"
+    "someone creates point server method"
     tennis.point_server
     expect(tennis.score).to eq "15 love"
   end
