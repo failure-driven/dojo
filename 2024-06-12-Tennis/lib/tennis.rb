@@ -1,17 +1,15 @@
 class Tennis
-  # SCORES = {
-  #   0: "love",
-  #   1: "15",
-  #   2: "30"
-  # }
+  DEFAULT_SCORES = %w[love 15 30 40]
+
   def initialize
     @score = 0
+    @score_receiver = 0
   end
 
   def score
-    return "love all" if @score == 0
-    return "15 love" if @score == 1
-    return "30 love" if @score == 2
+    output = [DEFAULT_SCORES[@score], DEFAULT_SCORES[@score_receiver]]
+    output = [output[0], "all"] if output.uniq.count == 1
+    output.join(" ")
   end
 
   def point_server

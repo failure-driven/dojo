@@ -18,5 +18,11 @@ RSpec.describe "Tennis" do
     2.times { tennis.point_server }
     expect(tennis.score).to eq "30 love"
   end
+
+  it "if server wins 3 points in a row, the score is 30 love" do
+    tennis = Tennis.new
+    3.times { tennis.point_server }
+    expect(tennis.score).to eq "40 love"
+  end
 end
 
