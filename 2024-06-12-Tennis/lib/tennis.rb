@@ -15,4 +15,8 @@ class Tennis
   def point_server
     @score += 1
   end
+
+  def point_receiver
+    @score_receiver += 1
+  end
 end
