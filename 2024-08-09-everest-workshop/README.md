@@ -14,10 +14,27 @@ http://cyber-dojo.org
 - background pairing and TDD
     - how do you introduce people to it
 
+BDD naming - characteristic testing - gold master
+
 - patterns
     - share control
+    - baby steps - keep validating
 - anti-patterns
     - "watch the master"
+
+- round the room fizz-buzz
+- TDD cycle
+    1. list of ideas (slicing!)
+    2. ❌ write a failing test
+    3. ✅ make it pass
+    4. ♻️ refactor? - code - tests
+    5. goto 2 (sometimes 1)
+- Expectations
+    - integrate TDD, contracts, TBD
+- mobbing
+    - driver is only typing
+    - the mob dictates what to do, there is a master navigator to always defer
+      to if too many people are talking
 
 ## Ruby setup
 
