@@ -2,6 +2,155 @@
 
 coding dojo - because pairing on code is so much better.
 
+## Simple setup
+
+### Ruby
+
+setup a directory and `RSpec` tests
+
+```sh
+# setup directory
+mkdir demo-code-kata
+cd demo-code-kata
+asdf local ruby 3.3.4       # latest at time of writing
+
+# add rspec test suite
+bundle init                 # generates a blank Gemfile
+bundle add rspec            # adds rspec to Gemfile
+bundle exec rspec --init    # configures spec/spec_helper.rb etc
+
+# add --format documentation to .rspec file
+sed -i.bak 'a\
+  --format documentation' .rspec && rm .rspec.bak
+
+bundle exec rspec
+```
+
+Create a test file
+
+```sh
+cat <<EOF > spec/yet_another_code_kata_spec.rb
+# frozen_string_literal: true
+
+require 'yet_another_code_kata'
+
+RSpec.describe YetAnotherCodeKata do
+  it('returns true, as there is always another code kata') do
+    yet_another_code_kata = YetAnotherCodeKata.new
+    expect(yet_another_code_kata.run).to eq true
+  end
+end
+EOF
+```
+
+```sh
+bundle exec rspec
+```
+
+That will fail ❌ [🅁 🄴 🄳 ], so let's create a simple implementation
+
+```sh
+mkdir lib
+cat <<EOF > lib/yet_another_code_kata.rb
+# frozen_string_literal: true
+
+class YetAnotherCodeKata
+  def run()= true
+end
+EOF
+```
+
+### Javascript
+
+setup `Jest` tests
+
+```sh
+cd demo-code-kata
+asdf local nodejs 20.10.0
+
+npm init --yes
+
+# if you haven't already
+# brew install jq
+# add jest to package.json runner scripts (requires jq)
+echo $(jq '.scripts.test="jest"' package.json) | jq . \
+    | > package_new.json && mv package{_new,}.json
+
+npm install --save-dev jest typescript @types/jest
+```
+
+write a test
+
+```sh
+cat <<EOF > yet-another-code-kata.test.js
+import yetAnotherCodeKata from './yet-another-code-kata';
+
+describe("yet another code kata", () => {
+  it("returns true, as there is always another code kata", () => {
+    expect(yetAnotherCodeKata()).toEqual(true);
+  });
+});
+EOF
+```
+
+```sh
+npm test
+```
+
+this will fail
+```error
+SyntaxError: Cannot use import statement outside a module
+```
+
+can be fixed using bable (or type: module and .mjs files)
+
+```sh
+npm install --save-dev @babel/preset-env
+
+cat <<EOF > babel.config.js
+module.exports = {
+  presets: [
+    ['@babel/preset-env', {targets: {node: 'current'}}],
+  ],
+};
+EOF
+```
+
+The test still fails ❌ [🅁 🄴 🄳 ], so let's create a simple implementation
+
+```sh
+cat <<EOF > yet-another-code-kata.js
+export default () => true;
+EOF
+```
+
+you can run tests in watch mode
+
+```sh
+npm test -- --watch
+```
+
+### Typescript
+
+on top of what is in javascript, setup typescript
+
+```sh
+npm install --save-dev @babel/preset-env @babel/preset-typescript
+
+cat <<EOF > babel.config.js
+module.exports = {
+  presets: [
+    ['@babel/preset-env', {targets: {node: 'current'}}],
+    '@babel/preset-typescript',
+  ],
+};
+EOF
+```
+
+change your test and implementation to `.ts` endings from `.js`.
+
+---
+
 ## Setup
 
   to list options
