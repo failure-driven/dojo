@@ -4,6 +4,66 @@ coding dojo - because pairing on code is so much better.
 
 ## Simple setup
 
+### Python
+
+make sure you have python
+
+```sh
+asdf plugin add python
+# check you have a recent python
+asdf local python 3.10.4
+python --version
+Python 3.10.4
+```
+
+create virtual environment
+
+```sh
+# -m mod : run library module as a script (terminates option list)
+python -m venv .venv
+# alternatively could call it something like `pytest-env`
+# with:
+#   python -m venv pytest-env
+
+# activate the virtual environemnt
+source .venv/bin/activate
+```
+
+install a test framework
+
+```sh
+# generate a requirements.txt file of required modules
+cat <<EOF > requirements.txt
+pytest
+EOF
+pip install -r requirements.txt
+```
+
+generate a test file
+
+```sh
+cat <<EOF > test_capitalize.py
+def capital_case(x):
+       return x.capitalize()
+
+def test_capital_case():
+       assert capital_case('semaphore') == 'Semaphore'
+EOF
+```
+
+run the test
+
+```sh
+pytest
+# in verbose mode
+pytest -vvv
+```
+
+finally to leave the virtual env run
+
+```sh
+deactivate
+```
 ### Ruby
 
 setup a directory and `RSpec` tests
