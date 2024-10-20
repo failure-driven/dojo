@@ -1,0 +1,37 @@
+# user and repo
+user        := `whoami`
+current_dir := `basename $( pwd )`
+
+# Colors
+RED     := "\\u001b[31m"
+GREEN   := "\\u001b[32m"
+RESET   := "\\u001b[0m"
+
+_default:
+    @echo "\nHi {{GREEN}}{{user}}!{{RESET}} Welcome to {{RED}}{{current_dir}}{{RESET}}\n"
+
+    @just --list --unsorted
+
+# setup python virtual env, activate and install requirements
+setup:
+    python -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
+    @echo "run following to activate environment"
+    @echo "\n\t{{GREEN}}source .venv/bin/activate{{RESET}}"
+
+# run pytest
+test:
+    pytest -vvv
+
+# run flake8 linter
+lint:
+    flake8 --exclude .venv
+
+# run full build, lint and test
+build: lint test
+
+# clean virtual env and cache
+clean:
+    # deactivate
+    rm -rf __pycache__ pytest-env
