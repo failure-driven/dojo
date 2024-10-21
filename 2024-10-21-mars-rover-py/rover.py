@@ -46,7 +46,7 @@ def new_direction(direction, command):
 
 def apply_move(position_commands, command):
     position_commands.update({
-        "x": position_commands["y"] +
+        "x": position_commands["x"] +
         MOVE_DIRECTION[command] *
         MOVE[position_commands["direction"]]["x"],
         "y": position_commands["y"] +
