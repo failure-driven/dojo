@@ -31,6 +31,18 @@ lint:
 # run full build, lint and test
 build: lint test
 
+# run server
+demo-server:
+    flask run --debug
+
+# run demo against running server
+demo:
+    curl "http://127.0.0.1:5000" \
+        -H 'Content-Type: application/json' \
+        --data '{"x":0, "y":0, "direction": "N", \
+            "commands": ["f", "f", "f", "f","r", "r"] \
+        }'
+
 # clean virtual env and cache
 clean:
     # deactivate
