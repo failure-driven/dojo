@@ -35,6 +35,12 @@ build: lint test
 demo-server:
     flask run --debug
 
+# run JS server
+demo-js-server:
+    cd demo-world-app-js && \
+        npm install && \
+        npm run dev
+
 # run demo against running server
 demo:
     curl "http://127.0.0.1:5000" \
