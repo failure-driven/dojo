@@ -3,6 +3,16 @@ DIRECTION_OFFSET = {
         "r": 1,
         "l": -1
         }
+MOVE = {
+        "N": {"x": 0, "y": 1},
+        "E": {"x": 1, "y": 0},
+        "S": {"x": 0, "y": -1},
+        "W": {"x": -1, "y": 0},
+        }
+MOVE_DIRECTION = {
+        "f": 1,
+        "b": -1
+        }
 
 
 def rover(position_commands):
@@ -17,6 +27,8 @@ def rover(position_commands):
 def apply_command(position_commands, command):
     if command in ["l", "r"]:
         apply_turn(position_commands, command)
+    if command in ["f", "b"]:
+        apply_move(position_commands, command)
 
 
 def apply_turn(position_commands, command):
@@ -30,3 +42,15 @@ def new_direction(direction, command):
     current_index = DIRECTIONS.index(direction)
     new_index = (current_index + DIRECTION_OFFSET[command]) % len(DIRECTIONS)
     return DIRECTIONS[new_index]
+
+
+def apply_move(position_commands, command):
+    position_commands.update({
+        "x": position_commands["y"] +
+        MOVE_DIRECTION[command] *
+        MOVE[position_commands["direction"]]["x"],
+        "y": position_commands["y"] +
+        MOVE_DIRECTION[command] *
+        MOVE[position_commands["direction"]]["y"]
+    })
+    return position_commands
