@@ -1,15 +1,18 @@
 
 
+VECTOR_MOVEMENTS = {
+    ("f", "N"): (1, 0),
+    ("b", "N"): (-1, 0),
+    ("f", "E"): (0, 1),
+    ("f", "S"): (-1, 0),
+    ("f", "W"): (0, -1),
+}
+
 def rover(position_commands):
     y = position_commands["y"]
     x = position_commands["x"]
     direction = position_commands["direction"]
     for command in position_commands['commands']:
-        if command == 'f':
-            x += 1
-            y += 0
-        if command == 'b':
-            x += -1
-            y += 0
-
+        x += VECTOR_MOVEMENTS[(command, direction)][0]
+        y += VECTOR_MOVEMENTS[(command, direction)][1]
     return {"x": x, "y": y, "direction": direction}
