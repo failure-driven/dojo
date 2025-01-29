@@ -17,3 +17,9 @@ def test_rover_forwards_multiple_times():
     assert rover({
         "x": 0, "y": 0, "direction": "N", "commands": ['f', 'f']
         }) == {"x": 2, "y": 0, "direction": "N"}
+
+
+def test_rover_forwards_backwards():
+    assert rover({
+        "x": 0, "y": 0, "direction": "N", "commands": ['f', 'b']
+        }) == {"x": 0, "y": 0, "direction": "N"}
