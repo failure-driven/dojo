@@ -2,11 +2,15 @@
 
 VECTOR_MOVEMENTS = {
     ("f", "N"): (1, 0),
-    ("b", "N"): (-1, 0),
     ("f", "E"): (0, 1),
     ("f", "S"): (-1, 0),
     ("f", "W"): (0, -1),
+    ("b", "N"): (-1, 0),
+    ("b", "E"): (0, -1),
+    ("b", "S"): (1, 0),
+    ("b", "W"): (0, 1),
 }
+
 
 def rover(position_commands):
     y = position_commands["y"]
