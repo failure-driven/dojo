@@ -25,6 +25,30 @@
 - sequence of commands encounters an obstacle, the rover moves up to the last
   possible point, aborts the sequence and reports the obstacle.
 
+## Discussions & Resources
+
+- connect with me
+    - https://linkedin.com/in/michael-milewski
+    - via [https://ruby.org.au/](https://ruby.org.au/)
+        - [Michael Milewski on Ruby AU slack](
+          https://app.slack.com/client/T039RN1PH/CHHUB1VHD)
+- reach out for a 1-on-1 coding session
+- up your game in language overview and syntax with
+  [https://exercism.org/](https://exercism.org/)
+- on why using inline `git commit -m "did stuff"` is not the best commit
+  message
+  - [![A Branch in Time (a story about revision histories) - Ruby Australia
+    ](
+      http://img.youtube.com/vi/1NoNTqank_U/0.jpg
+    )](https://youtu.be/1NoNTqank_U)
+
+- on wether or not pull requests are a good thing
+  - [![
+      Why Pull Requests Are A BAD IDEA - Continuous Delivery - Dave Farley
+    ](
+      http://img.youtube.com/vi/ASOSEiJCyEM/0.jpg
+    )](https://youtu.be/ASOSEiJCyEM)
+
 ## Setup
 
 ```sh
