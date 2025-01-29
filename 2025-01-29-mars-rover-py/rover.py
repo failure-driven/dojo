@@ -1,4 +1,9 @@
 
 
 def rover(position_commands):
-    return {"x": 0, "y": 0, "direction": "N"}
+    y = position_commands["y"]
+    x = position_commands["x"]
+    direction = position_commands["direction"]
+    if position_commands['commands'] == ['f']:
+        x += 1
+    return {"x": x, "y": y, "direction": direction}
