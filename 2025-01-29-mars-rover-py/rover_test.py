@@ -23,3 +23,9 @@ def test_rover_forwards_backwards():
     assert rover({
         "x": 0, "y": 0, "direction": "N", "commands": ['f', 'b']
         }) == {"x": 0, "y": 0, "direction": "N"}
+
+
+def test_rover_forwards_from_east():
+    assert rover({
+        "x": 0, "y": 0, "direction": "E", "commands": ['f', 'f']
+        }) == {"x": 0, "y": 2, "direction": "E"}
