@@ -53,15 +53,20 @@ EOF
 pip install -r requirements.txt
 ```
 
-generate a test file
+generate a test file and implementation
 
 ```sh
-cat <<EOF > test_capitalize.py
-def capital_case(x):
-       return x.capitalize()
+cat << EOF > rover_test.py
+from rover import rover
+def test_stationary_rover():
+    assert rover({
+        "x": 0, "y": 0, "direction": "N", "commands": []
+        }) == {"x": 0, "y": 0, "direction": "N"}
+EOF
 
-def test_capital_case():
-       assert capital_case('semaphore') == 'Semaphore'
+cat << EOF > rover.py
+def rover(position_commands):
+    return {"x": 0, "y": 0, "direction": "N"}
 EOF
 ```
 
@@ -84,6 +89,19 @@ add a build script `mise.toml` or similar
 ```sh
 cp ../mise.toml .
 mise run
+```
+
+git ignore and commit
+
+```sh
+cat << EOF > .gitignore
+__pycache__
+.venv
+EOF
+
+git mob <your github username>
+
+git commit --verbose
 ```
 
 ### Ruby

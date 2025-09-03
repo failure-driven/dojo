@@ -34,3 +34,13 @@ run = [
   "echo deactivate",
   "rm -rf __pycache__ .pytest_cache .venv"
 ]
+
+[tasks."all-the-lols"]
+description = "show all the lols"
+run  = """
+  ls -t ~/.lolcommits/**/*.gif | \
+    sed "s/^/<img src=\\"/" | \
+    sed "s/.*/&\\">/" > \
+    ${HOME}/temp_lolcommitters.html && \
+    open ${HOME}/temp_lolcommitters.html
+"""
