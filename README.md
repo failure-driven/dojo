@@ -9,11 +9,25 @@ coding dojo - because pairing on code is so much better.
 make sure you have python
 
 ```sh
-asdf plugin add python
+# check we have mise to manage runtimes
+mise --version
+
+# setup recent python
+mise use python@3.12.11
+
 # check you have a recent python
-asdf local python 3.10.4
 python --version
-Python 3.10.4
+Python 3.12.11
+```
+
+create a directory for today's dojo
+
+```sh
+mkdir "$(date +'%Y-%m-%d')-mars-rover-py"
+
+ls -lrt
+
+cd 2025-09-03-mars-rover-py
 ```
 
 create virtual environment
@@ -64,6 +78,14 @@ finally to leave the virtual env run
 ```sh
 deactivate
 ```
+
+add a build script `mise.toml` or similar
+
+```sh
+cp ../mise.toml .
+mise run
+```
+
 ### Ruby
 
 setup a directory and `RSpec` tests

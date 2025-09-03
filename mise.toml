@@ -1,0 +1,36 @@
+[vars]
+tty_blue = "\\033[%sm;34"
+tty_yellow="\\033[%sm;33"
+tty_green = "\\033[%sm;32"
+tty_red = "\\033[%sm;31"
+tty_bold = "\\033[%sm;39"
+tty_reset = "\\033[%sm;0"
+
+[tasks.setup]
+description = "setup python virtual env, activate and install requirements"
+run = [
+  "python -m venv .venv",
+  "source .venv/bin/activate",
+  "pip install -r requirements.txt",
+  """echo "run following to activate environment"""",
+  "echo \n\tsource .venv/bin/activate",
+]
+
+[tasks.test]
+description = "run pytest"
+run = "pytest -vvv"
+
+[tasks.lint]
+description = "run flake8 linter"
+run = "flake8 --exclude .venv"
+
+[tasks.build]
+description = "run full build, lint and test"
+depends = ["lint", "test"]
+
+[tasks.clean]
+description = "clean virtual env and cache"
+run = [
+  "echo deactivate",
+  "rm -rf __pycache__ .pytest_cache .venv"
+]
