@@ -15,6 +15,9 @@ def test_stationary_rover_360():
     assert rover({
         "x": 0, "y": 0, "direction": "N", "commands": ["r", "r"]
         }) == {"x": 0, "y": 0, "direction": "S"}
+    assert rover({
+        "x": 0, "y": 0, "direction": "N", "commands": ["r", "r", "r"]
+        }) == {"x": 0, "y": 0, "direction": "W"}
 
 
 def test_right_rotation():
