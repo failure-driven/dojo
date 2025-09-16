@@ -1,7 +1,10 @@
+import RobotDashboard from "@/components/RobotComponent";
+import React from "react";
+
 export default function Home() {
   return (
     <main>
-      <div>Hello world!</div>
+      <RobotDashboard />
     </main>
   );
 }
