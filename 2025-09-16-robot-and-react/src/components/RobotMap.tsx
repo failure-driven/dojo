@@ -20,13 +20,13 @@ interface Robot {
   direction: Direction;
 }
 
-const robot: Robot = {
-  x: 0,
-  y: 0,
-  direction: "N",
-};
+interface RobotMapProps {
+  robot?: Robot;
+}
 
-const RobotMap: React.FC = () => {
+const RobotMap: React.FC<RobotMapProps> = ({
+  robot = { x: 0, y: 0, direction: "N" }
+}) => {
   // Center (0,0) in the grid
   const centerX = Math.floor(GRID_SIZE / 2);
   const centerY = Math.floor(GRID_SIZE / 2);

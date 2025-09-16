@@ -140,6 +140,26 @@ const RobotInput: React.FC<RobotInputProps> = ({ onSubmit }) => {
           </div>
         )}
       </div>
+      <button
+        onClick={() => {
+          if (validateJSON(editorValue) && onSubmit) {
+            try {
+              const parsed = JSON.parse(editorValue);
+              onSubmit(parsed as RobotCommandData);
+            } catch {
+              setError('Failed to parse JSON');
+            }
+          }
+        }}
+        disabled={!isValid}
+        className={`px-4 py-2 rounded font-medium transition-colors ${
+          isValid
+            ? 'bg-blue-500 text-white hover:bg-blue-600'
+            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+        }`}
+      >
+        Load Commands
+      </button>
       <div className="mt-4 text-sm text-gray-600">
         <p className="font-medium">Expected format:</p>
         <pre className="mt-1 bg-gray-100 p-2 rounded text-xs">
