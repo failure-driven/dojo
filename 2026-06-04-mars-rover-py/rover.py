@@ -1,6 +1,12 @@
-def rover(a):
+def rover(position_commands):
+    y = position_commands["y"]
+    x = position_commands["x"]
+    direction = position_commands["direction"]
+    if len(position_commands["commands"]) > 0:
+        y += 1
+
     return {
-         'x': 0,
-         'y': 0,
-         'direction': 'N',
+         'x': x,
+         'y': y,
+         'direction': direction,
      }
