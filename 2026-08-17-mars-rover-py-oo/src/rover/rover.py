@@ -1,34 +1,51 @@
-class Rover:
-    DIRECTIONS = ["N", "E", "S", "W"]
-    VECTOR = [
-        [0, 1],
-        [1, 0],
-        [0, -1],
-        [-1, 0],
-    ]
+from dataclasses import dataclass
 
-    def __init__(self, position=None):
-        self.position = position or {"x": 0, "y": 0, "direction": "N"}
+
+@dataclass
+class Position:
+    x: int = 0
+    y: int = 0
+    direction: str = "N"
+
+
+class Rover:
+    VECTOR = {
+        "N": (0, 1),
+        "E": (1, 0),
+        "S": (0, -1),
+        "W": (-1, 0),
+    }
+    RIGHT_OF = {
+        "N": "E",
+        "E": "S",
+        "S": "W",
+        "W": "N",
+    }
+    LEFT_OF = {v: k for k, v in RIGHT_OF.items()}
+    COMMANDS = {
+        "l": "apply_turn",
+        "r": "apply_turn",
+        "f": "apply_move",
+        "b": "apply_move",
+    }
+
+    def __init__(self, position: Position | None = None):
+        self.position = position or Position()
 
     def move(self, commands):
         for command in commands:
-            if command in ["l", "r"]:
-                self.apply_turn(command)
-            if command in ["f", "b"]:
-                self.apply_move(command)
+            method = getattr(self, self.COMMANDS[command])
+            method(command)
 
-    def location(self):
+    def location(self) -> Position:
         return self.position
 
     def apply_turn(self, command):
-        offset = 1 if command == "r" else -1
-        new_direction = (self.dir_index() + offset) % len(self.DIRECTIONS)
-        self.position["direction"] = self.DIRECTIONS[new_direction]
+        turns = self.RIGHT_OF if command == "r" else self.LEFT_OF
+        self.position.direction = turns[self.position.direction]
 
     def apply_move(self, command):
         offset = 1 if command == "f" else -1
-        self.position["x"] += self.VECTOR[self.dir_index()][0] * offset
-        self.position["y"] += self.VECTOR[self.dir_index()][1] * offset
-
-    def dir_index(self):
-        return self.DIRECTIONS.index(self.position["direction"])
+        dx, dy = self.VECTOR[self.position.direction]
+        self.position.x += dx * offset
+        self.position.y += dy * offset
