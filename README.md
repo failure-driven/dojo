@@ -113,8 +113,15 @@ make
 make check
 make lint
 make test
+```
 
-# if all is clean
+if all is clean
+
+```sh
+git add .
+```
+
+ready to commit
 
 ```sh
 git mob <your-github-username>
