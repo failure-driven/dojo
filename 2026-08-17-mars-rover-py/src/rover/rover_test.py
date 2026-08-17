@@ -44,3 +44,27 @@ def test_3_turns_to_left():
         "x": 0, "y": 0, "direction": "N", "commands": ["l", "l", "l"]
     })
     assert next_location == {"x": 0, "y": 0, "direction": "E"}
+
+
+def test_can_move_forward_in_all_directions():
+    defaults = {"x": 0, "y": 0, "direction": "N", "commands": ["f"]}
+    next_location = rover(defaults | {"direction": "N"})
+    assert next_location == {"x": 0, "y": 1, "direction": "N"}
+    next_location = rover(defaults | {"direction": "E"})
+    assert next_location == {"x": 1, "y": 0, "direction": "E"}
+    next_location = rover(defaults | {"direction": "S"})
+    assert next_location == {"x": 0, "y": -1, "direction": "S"}
+    next_location = rover(defaults | {"direction": "W"})
+    assert next_location == {"x": -1, "y": 0, "direction": "W"}
+
+
+def test_can_move_backward_in_all_directions():
+    defaults = {"x": 0, "y": 0, "direction": "N", "commands": ["b"]}
+    next_location = rover(defaults | {"direction": "N"})
+    assert next_location == {"x": 0, "y": -1, "direction": "N"}
+    next_location = rover(defaults | {"direction": "E"})
+    assert next_location == {"x": -1, "y": 0, "direction": "E"}
+    next_location = rover(defaults | {"direction": "S"})
+    assert next_location == {"x": 0, "y": 1, "direction": "S"}
+    next_location = rover(defaults | {"direction": "W"})
+    assert next_location == {"x": 1, "y": 0, "direction": "W"}
