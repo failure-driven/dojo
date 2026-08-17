@@ -76,3 +76,6 @@ all_the_lols:
 		${HOME}/temp_lolcommitters.html && \
 		open ${HOME}/temp_lolcommitters.html
 
+.PHONY: why_the_lols
+why_the_lols:
+	open https://arxiv.org/html/2312.01680v2
