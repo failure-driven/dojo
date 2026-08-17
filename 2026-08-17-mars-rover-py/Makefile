@@ -13,4 +13,4 @@ check: lint test
 
 .PHONY: demo
 demo:
-	@uv run rover '{"x":0,"y":0,"direction":"N","commands":[]}'
+	@uv run rover '{"x":0,"y":0,"direction":"N","commands":["l","l","r"]}'
