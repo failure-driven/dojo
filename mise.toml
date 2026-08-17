@@ -44,3 +44,6 @@ run  = """
     ${HOME}/temp_lolcommitters.html && \
     open ${HOME}/temp_lolcommitters.html
 """
+
+[tools]
+python = "latest"

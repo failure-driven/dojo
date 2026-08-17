@@ -4,6 +4,129 @@ coding dojo - because pairing on code is so much better.
 
 ## Simple setup
 
+### Python - using uv
+
+check versions
+
+```sh
+python --version
+# Python 3.14.7
+
+uv --version
+# uv 0.11.26 (Homebrew 2026-06-30 aarch64-apple-darwin)
+```
+
+create a uv package
+
+```sh
+# name with todays date
+PKG="$(date +'%Y-%m-%d')-mars-rover-py"
+
+# initialize a uv package called rover in a directory called rover
+uv init --package rover
+
+# move the generic rover directory to our dated directory
+mv rover $PKG
+
+# go into the package and run the rover
+cd $PKG
+uv run rover
+```
+
+setup a build script
+
+```sh
+# pytest for testing and flake8 for linting
+uv add --dev pytest flake8
+```
+
+create a test file
+
+```sh
+cat <<EOF > src/rover/rover_test.py
+from rover.rover import rover
+
+def test_stationary_rover():
+    assert rover({
+        "x": 0, "y": 0, "direction": "N", "commands": []
+    }) == {"x": 0, "y": 0, "direction": "N"}
+EOF
+```
+
+and a simple implementation
+
+```sh
+cat <<EOF > src/rover/rover.py
+def rover(position_commands):
+    return {"x": 0, "y": 0, "direction": "N"}
+EOF
+```
+
+finally update the runner to take some JSON input and run it to our runner
+
+```sh
+cat <<EOF > src/rover/__init__.py
+import json
+import sys
+from rover.rover import rover
+
+
+def main():
+    position_commands = json.loads(sys.argv[1])
+    print(rover(position_commands))
+
+
+if __name__ == "__main__":
+    main()
+EOF
+```
+
+So many commands, lets use make to remind us what to run
+
+NOTE: remember make needs TAB characters
+
+```sh
+cat <<EOF > Makefile
+default: check
+
+.PHONY: lint
+lint:
+	uv run flake8 --exclude .venv
+
+.PHONY: test
+test:
+	uv run pytest -vvv
+
+.PHONY: check
+check: lint test
+
+.PHONY: demo
+demo:
+	@uv run rover '{"x":0,"y":0,"direction":"N","commands":[]}'
+EOF
+```
+
+check and commit
+
+```sh
+make
+make check
+make lint
+make test
+
+# if all is clean
+
+```sh
+git mob <your-github-username>
+
+# if comfortable with vi
+git commit -v
+
+# or
+git config --global core.editor "code --wait"
+git commit -v
+```
+
 ### Python
 
 make sure you have python
