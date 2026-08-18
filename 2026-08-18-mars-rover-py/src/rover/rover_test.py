@@ -26,3 +26,8 @@ def test_left_rover():
     assert rover({
         "x": 0, "y": 0, "direction": "N", "commands": ["L"]
     }) == {"x": 0, "y": 0, "direction": "W"}
+
+def test_right360_rover():
+    assert rover({
+        "x": 0, "y": 0, "direction": "N", "commands": ["R", "R", "R", "R"]
+    }) == {"x": 0, "y": 0, "direction": "N"}
