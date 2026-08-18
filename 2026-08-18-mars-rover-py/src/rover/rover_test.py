@@ -21,3 +21,8 @@ def test_right_turn_from_west_rover():
     assert rover({
         "x": 0, "y": 0, "direction": "W", "commands": ["R"]
     }) == {"x": 0, "y": 0, "direction": "N"}
+
+def test_left_rover():
+    assert rover({
+        "x": 0, "y": 0, "direction": "N", "commands": ["L"]
+    }) == {"x": 0, "y": 0, "direction": "W"}
